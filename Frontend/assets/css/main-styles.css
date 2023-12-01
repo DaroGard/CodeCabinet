@@ -1,0 +1,178 @@
+body{
+    background-color: #191E29;
+    font: 1em sans-serif;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin-left: 0.5%;
+}
+
+header{
+    float: right;
+    background-color:#191E29;
+    background-image: url('/assets/img/bckg1.png');
+    display: flex;
+    width: 85%;
+    align-items: center;
+    justify-content: space-between;
+    color: #A7E24C;
+}
+
+#logo{
+    margin-top: 10%;
+    width: 100%;
+    margin-bottom: 15%;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+    color: #A7E24C;
+    float: left;
+    width: 15%;
+    height: 100%;
+}
+
+main{
+    background-color: #191e29;
+    background-image: url('/assets/img/bckg1.png');
+    color: #A7E24C;
+    float: right;
+    width: 85%;
+    height: 100%;
+}
+
+.mainBox{
+    background-color: rgba(105, 110, 121, 0.432);
+    width: 99%;
+    height: 88%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#underBox{
+    margin: 1%;
+    width: 99%;
+    height: 93%;
+    border-radius: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#profilePic{
+    width: 5%;
+    margin: 0.5%;
+    border-radius: 100%;
+}
+
+#profilePic:hover{
+    border: solid;
+    border-color: #A7E24C;
+}
+
+#searchBar{
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 85%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 1%;
+    border-radius: 10px;
+    border: none;
+    background-color: #696e7954;
+}
+
+#navSection{
+    width: 85%;
+}
+
+#addButton{
+    width: 30%;
+    height: 7%;
+    border-radius: 20px;
+    margin-bottom: 10%;
+    --bs-btn-color: #A7E24C!important;
+    --bs-btn-border-color: #A7E24C!important;
+    --bs-btn-hover-bg: #A7E24C!important;
+    --bs-btn-hover-border-color: #A7E24C!important;
+    --bs-btn-active-bg: #A7E24C!important;
+    --bs-btn-active-border-color: #A7E24C!important;
+    --bs-btn-disabled-color: #A7E24C!important;
+    --bs-btn-disabled-border-color: #A7E24C!important;
+}
+
+.btn-outline-danger {
+    --bs-btn-color: #A7E24C!important;
+    --bs-btn-border-color: #A7E24C!important;
+    --bs-btn-hover-bg: #A7E24C!important;
+    --bs-btn-hover-border-color: #A7E24C!important;
+    --bs-btn-active-bg: #A7E24C!important;
+    --bs-btn-active-border-color: #A7E24C!important;
+    --bs-btn-disabled-color: #A7E24C!important;
+    --bs-btn-disabled-border-color: #A7E24C!important;
+}
+
+#storageBar{
+    width: 90%;
+}
+
+.col{
+    margin-right: 4%;
+    margin-bottom: 25%;
+    border-radius: 8px;
+    height: 22vh;
+}
+
+.card {
+    color: #fff!important;
+    --bs-card-bg: #191E29!important;
+}
+
+.card:hover{
+    border: solid;
+    border-color: #a6e24c;
+}
+
+.list-group-item {
+    color: #fff!important;
+    background-color: #191E29!important;
+}
+
+a {
+    font-size: larger;
+    color: #696E79!important;
+}
+
+#recycleIcon{
+    float: right;
+}
+
+#settingsIcon:hover{
+    color: #fff;
+}
+
+#favoriteIcon:hover{
+    color:#ffd700!important;
+}
+
+#shareIcon:hover{
+    color:#A7E24C!important;
+}
+
+#recycleIcon:hover{
+    color:#ff0000!important;
+}
+
+.button{
+    height: 4vh;
+    color: #A7E24C;
+    background-color: #000000;
+    border: none;
+}
