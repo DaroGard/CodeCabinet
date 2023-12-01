@@ -176,3 +176,9 @@ a {
     background-color: #000000;
     border: none;
 }
+
+.btn-primary{
+    color: #000000!important;
+    background-color:#A7E24C!important;
+    border-color: #a6e24c!important;
+}
