@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCabinet</title>
+    <link rel="stylesheet" type="text/css" href="https://codemirror.net/5/lib/codemirror.css">
+    <script type="text/javascript" src="https://codemirror.net/5/lib/codemirror.js"></script>
+    <script type="text/javascript" src="https://codemirror.net/5//mode/xml/xml.js"></script>
+    <script type="text/javascript" src="https://codemirror.net/5/mode/css/css.js"></script>
+    <script type="text/javascript" src="https://codemirror.net/5/mode/javascript/javascript.js"></script>
+    <link rel="stylesheet" href="assets/css/code-styles.css">
+    <link rel="shortcut icon" href="assets/img/lg-mini0.png" type="image/x-icon">
+</head>
+<body>
+    <div class="header">
+        <a href="main.html"><img src="assets/img/lg-name.png" style="width: 50%;"></a>
+        <button id="Fav-btn">Favorite</button>
+        <button id="save-btn" onclick="savecontent()">Save</button>
+        <button id="run-btn">Run</button>
+    </div>
+    <div class="editor">      
+        <div class="code">        
+            <div class="html-code"></div>        
+            <div class="css-code"></div>        
+            <div class="js-code"></div>       
+        </div>   
+        <div class="preview">  
+            <iframe id="preview-window"></iframe>  
+        </div>
+    </div>
+    
+    <script src="assets/js/code-controller.js"></script>
+</body>
+</html>
