@@ -4,7 +4,7 @@ const user = [
         username: 'David',
         password: '12345',
         profileimg: 'img.jpg',
-        membership: 'Premium',
+        membership: 'Platinum',
         proyects: [
             {
                 _id:1,
