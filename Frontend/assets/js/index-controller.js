@@ -1,18 +1,37 @@
-function userVerification(){
-    const username = 'David';
-    const userPassword = '134';
+localStorage.removeItem('id', ``);
+localStorage.removeItem('htmlCode');
+localStorage.removeItem('cssCode');
+localStorage.removeItem('jsCode');
+localStorage.removeItem('html_code');
+localStorage.removeItem('css_code');
+localStorage.removeItem('js_code');
 
+const userVerification = async () => {
+    var cont = 0;
+    const resultado = await fetch('http://localhost:8888/users', {
+        method: 'GET'
+    });
+
+    usuarios = await resultado.json();
     user = document.getElementById('user').value;
     password = document.getElementById('pass').value;
 
-    if(username == user && userPassword == password){
-        window.location.href = 'main.html';
-    } else {
-        alert('Datos incorrectos');
-    }
+    var MAX = usuarios.length;
 
-    console.log("Usuario: ", user);
-    console.log("Contraseña: ", password);
+    usuarios.forEach(usuario => {
+        console.log(usuario.username);
+        console.log(usuario._id);
+        
+        if(usuario.username == user && usuario.password == password){
+            localStorage.setItem('id', `${usuario._id}`);
+            window.location.href = 'main.html';
+        } else {
+            cont +=1;
+            if (cont == MAX){
+                alert('Datos incorrectos');
+            }
+        }
+    });
 }
 
 function createUser(){

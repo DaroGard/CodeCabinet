@@ -1,0 +1,522 @@
+[
+    {
+        "_id": {
+            "$oid": "6571240b6e3760c396e69ef8"     
+        },
+        "title": "Proyecto1",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": true,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "6571240b6e3760c396e69ef9"     
+        },
+        "title": "Proyecto2",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "Favorites": false,
+        "Shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "6571240b6e3760c396e69efa"     
+        },
+        "title": "Proyecto3",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "Favorites": true,
+        "Shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html":"code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f08"     
+        },
+        "title": "Proyecto4",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": false,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f09"     
+        },
+        "title": "Proyecto5",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": true,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f0a"     
+        },
+        "title": "Proyecto6",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": false,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f0b"     
+        },
+        "title": "Proyecto7",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": true,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f0c"     
+        },
+        "title": "Proyecto8",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": false,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f0d"     
+        },
+        "title": "Proyecto9",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": true,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f0e"     
+        },
+        "title": "Proyecto10",
+        "user": {
+            "_id": {
+                "$oid": "657123196e3760c396e69ef4"     
+            },
+            "username": "Kaneki"
+        },
+        "favorites": false,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f0f"     
+        },
+        "title": "Proyecto11",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f02"     
+            },
+            "username": "Sinon"
+        },
+        "favorites": false,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f10"     
+        },
+        "title": "Proyecto12",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f02"     
+            },
+            "username": "Sinon"
+        },
+        "favorites": true,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f11"     
+        },
+        "title": "Proyecto13",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f02"     
+            },
+            "username": "Sinon"
+        },
+        "favorites": false,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f12"     
+        },
+        "title": "Proyecto14",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f02"     
+            },
+            "username": "Sinon"
+        },
+        "favorites": true,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f13"     
+        },
+        "title": "Proyecto15",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f02"     
+            },
+            "username": "Sinon"
+        },
+        "favorites": false,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f14"     
+        },
+        "title": "Proyecto16",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f03"     
+            },
+            "username": "Toshiro"
+        },
+        "favorites": false,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f15"     
+        },
+        "title": "Proyecto17",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f03"     
+            },
+            "username": "Toshiro"
+        },
+        "favorites": true,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f16"     
+        },
+        "title": "Proyecto18",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f03"     
+            },
+            "username": "Toshiro"
+        },
+        "favorites": false,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f17"     
+        },
+        "title": "Proyecto19",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f04"     
+            },
+            "username": "Raphtalia"
+        },
+        "favorites": true,
+        "shared": false,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    },
+    {
+        "_id": {
+            "$oid": "657152926e3760c396e69f18"     
+        },
+        "title": "Proyecto20",
+        "user": {
+            "_id": {
+                "$oid": "657146d36e3760c396e69f04"     
+            },
+            "username": "Raphtalia"
+        },
+        "favorites": false,
+        "shared": true,
+        "recycle": false,
+        "inside": [
+            {
+                "html": "code"
+            },
+            {
+                "css": "code"
+            },
+            {
+                "js": "code"
+            }
+        ]    
+    }
+]

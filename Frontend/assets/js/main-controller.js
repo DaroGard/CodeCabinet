@@ -1,32 +1,116 @@
-function userProfile(){
-    document.getElementById('topNav').innerHTML += `
-    <img src="/assets/img/default-picture.png" type="button" data-bs-toggle="modal" data-bs-target="#userModal" onclick="userModalWindow()" id="profilePic">
+var htmlCode = localStorage.getItem('htmlCode') || '';
+var cssCode = localStorage.getItem('cssCode') || '';
+var jsCode = localStorage.getItem('jsCode') || '';
+var selectedUser = localStorage.getItem('id');
+console.log(selectedUser);
+
+if(selectedUser == null){
+    window.location.href = 'index.html';
+}
+
+const userProfile = async () => {
+    const resultado = await fetch(`http://localhost:8888/users/${selectedUser}`, {
+        method: 'GET'
+    });
+
+    usuario = await resultado.json();
+
+    document.getElementById('topNav').innerHTML = `
+    <input type="search" placeholder="Search" id="searchBar">
+    <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#modalLog" onclick="modalWindow()"><i class="fa-solid fa-gears fa-2xl" id="settingsIcon"></i></button>
+    <img src="${usuario.profileimg}" type="button" data-bs-toggle="modal" data-bs-target="#userModal" onclick="userModalWindow()" id="profilePic">
     `;
 }
 
 userProfile();
 
-function userProjects(){
+const openFolder = async (id) => {
+
+    const resultado = await fetch(`http://localhost:8888/folders/${id}`, {
+        method: 'GET'
+    });
+    
+    folder = await resultado.json();
+
+    localStorage.setItem('html_code', `${folder.inside[0].html}`);
+    localStorage.setItem('css_code', `${folder.inside[1].css}`);
+    localStorage.setItem('js_code', `${folder.inside[2].js}`);
+
+    window.location.href = 'code.html'
+};
+
+const userProjects = async () => {
+    const resultado = await fetch(`http://localhost:8888/folders`, {
+        method: 'GET'
+    });
+    
+    folders = await resultado.json();
+
     document.getElementById('mainHeader').innerHTML = 'Home';
     document.getElementById('projectCard').innerHTML = '';
-    document.getElementById('projectCard').innerHTML += `
-    <div class="col">
-        <div class="card" style="width: 16rem;"> 
-            <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project">   
-            <div class="card-body">                                                            
-            <h5 class="card-title">Untitled</h5>                                                  
-            </div>                                                     
-            <ul class="list-group list-group-flush">                                                     
-                <li class="list-group-item">Username</li>                                                   
-            </ul>                                                    
-            <div class="card-body">                                                    
-                <a href="#" class="card-link" id="favoriteIcon"><i class="fa-regular fa-star"></i></a>                                                   
-                <a href="#" class="card-link" id="shareIcon"><i class="fa-solid fa-folder-tree"></i></a>                                             
-                <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
-            </div>     
-        </div>
-    </div>
-    `;
+
+    folders.forEach(folder => {
+        if(folder.shared == true){
+            document.getElementById('projectCard').innerHTML += `
+            <div class="col">
+                <div class="card" style="width: 16rem;"> 
+                    <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project" onclick="openFolder('${folder._id}', '${htmlCode}')">   
+                    <div class="card-body">                                                            
+                        <h5 class="card-title">${folder.title}</h5>                                                  
+                    </div>                                                     
+                    <ul class="list-group list-group-flush">                                                     
+                        <li class="list-group-item">${folder.user.username}</li>                                                   
+                    </ul>                                                    
+                    <div class="card-body">                                                    
+                       <a href="#" class="card-link" id="favoriteIcon_${folder._id}"><i class="fa-regular fa-star"></i></a>                                                   
+                       <a href="#" class="card-link" id="shareIcon_${folder._id}"><i class="fa-solid fa-folder-tree"></i></a>                                             
+                       <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
+                    </div>     
+                </div>
+            </div>
+        `;
+        if(folder.user._id == selectedUser){
+            if(folder.favorites == true){
+                var favoriteIcon = document.getElementById(`favoriteIcon_${folder._id}`);
+                favoriteIcon.id = "favoriteIconON";
+            }
+        }
+        if(folder.shared == true){
+            var shareIcon = document.getElementById(`shareIcon_${folder._id}`);
+            shareIcon.id = "shareIconON";
+        }
+        } else if(folder.user._id == selectedUser){
+            document.getElementById('projectCard').innerHTML += `
+            <div class="col">
+                <div class="card" style="width: 16rem;"> 
+                    <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project" onclick="openFolder('${folder._id}')">   
+                    <div class="card-body">                                                            
+                        <h5 class="card-title">${folder.title}</h5>                                                  
+                    </div>                                                     
+                    <ul class="list-group list-group-flush">                                                     
+                        <li class="list-group-item">${folder.user.username}</li>                                                   
+                    </ul>                                                    
+                    <div class="card-body">                                                    
+                       <a href="#" class="card-link" id="favoriteIcon_${folder._id}"><i class="fa-regular fa-star"></i></a>                                                   
+                       <a href="#" class="card-link" id="shareIcon_${folder._id}"><i class="fa-solid fa-folder-tree"></i></a>                                             
+                       <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
+                    </div>     
+                </div>
+            </div>
+        `;
+        if(folder.user._id == selectedUser){
+            if(folder.favorites == true){
+                var favoriteIcon = document.getElementById(`favoriteIcon_${folder._id}`);
+                favoriteIcon.id = "favoriteIconON";
+            }
+        };
+        if(folder.shared == true){
+            var shareIcon = document.getElementById(`shareIcon_${folder._id}`);
+            shareIcon.id = "shareIconON";
+        }
+        };
+    }); 
+    
 }
 
 userProjects();
@@ -53,7 +137,13 @@ function modalWindow(){
     `;
 }
 
-function userModalWindow(){
+const userModalWindow = async() => {
+    const resultado = await fetch(`http://localhost:8888/users/${selectedUser}`, {
+        method: 'GET'
+    });
+
+    usuario = await resultado.json();
+
     document.getElementById('userModalContent').innerHTML = '';
     document.getElementById('userModalContent').innerHTML = `
     <div class="modal-header">
@@ -61,22 +151,37 @@ function userModalWindow(){
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>  
         <div class="modal-body" id="modal-body-user">     
-            <div id="modalPerfilImg"><img src="assets/img/default-picture.png" alt="" style="width: 100%;"></div>
+            <div id="modalPerfilImg"><img src="${usuario.profileimg}" alt="" style="width: 100%;"></div>
             <h1>Username</h1>
             <ul>
-              <li><a href="#">Change Username</a></li>
               <li><a href="#" onclick="usersModalWindow()">Select User</a></li>
               <li><a href="index.html">Sign Out</a></li>
             </ul>
     `;
 }
 
-function usersModalWindow(){
+const usersModalWindow = async() =>{
+    const resultado = await fetch(`http://localhost:8888/users`, {
+        method: 'GET'
+    });
+
+    usuarios = await resultado.json();
+
     document.getElementById('modal-body-user').innerHTML = '';
-    document.getElementById('modal-body-user').innerHTML += `
-    <div id="modalSelectPerfilImg"><img src="assets/img/default-picture.png" alt="" style="width: 100%;"></div>
-    <h1 id="modalUsername">Username</h1>
-    `;
+    usuarios.forEach(usuario =>{
+        document.getElementById('modal-body-user').innerHTML += `
+        <div id="modalSelectPerfilImg" onclick="changeUser('${usuario._id}')"><img src="${usuario.profileimg}" alt="" style="width: 100%;"></div>
+        <h1 id="modalUsername">${usuario.username}</h1>
+        `;
+    })
+}
+
+function changeUser(id){
+    localStorage.setItem('id', id);
+    selectedUser = id;
+    userProfile();
+    userProjects();
+    storageLimit();
 }
 
 function addUserModal(){
@@ -167,27 +272,48 @@ function plansUserModal(){
     `;
 }
 
-function userLocalProjects(){
+const userLocalProjects = async() => {
+
+    const resultado = await fetch(`http://localhost:8888/folders`, {
+        method: 'GET'
+    });
+    
+    folders = await resultado.json();
+
     document.getElementById('mainHeader').innerHTML = 'My Unit';
     document.getElementById('projectCard').innerHTML = '';
-    document.getElementById('projectCard').innerHTML += `
-    <div class="col">
-        <div class="card" style="width: 16rem;"> 
-            <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project">   
-            <div class="card-body">                                                            
-            <h5 class="card-title">Untitled</h5>                                                  
-            </div>                                                     
-            <ul class="list-group list-group-flush">                                                     
-                <li class="list-group-item">Username</li>                                                   
-            </ul>                                                    
-            <div class="card-body">                                                    
-                <a href="#" class="card-link" id="favoriteIcon"><i class="fa-regular fa-star"></i></a>                                                   
-                <a href="#" class="card-link" id="shareIcon"><i class="fa-solid fa-folder-tree"></i></a>                                             
-                <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
-            </div>     
-        </div>
-    </div>
-    `;
+
+    folders.forEach(folder => {
+        if(folder.user._id == selectedUser){
+            document.getElementById('projectCard').innerHTML += `
+            <div class="col">
+                <div class="card" style="width: 16rem;"> 
+                    <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project" onclick="openFolder('${folder._id}')">   
+                    <div class="card-body">                                                            
+                        <h5 class="card-title">${folder.title}</h5>                                                  
+                    </div>                                                     
+                    <ul class="list-group list-group-flush">                                                     
+                        <li class="list-group-item">${folder.user.username}</li>                                                   
+                    </ul>                                                    
+                    <div class="card-body">                                                    
+                       <a href="#" class="card-link" id="favoriteIcon_${folder._id}"><i class="fa-regular fa-star"></i></a>                                                   
+                       <a href="#" class="card-link" id="shareIcon_${folder._id}"><i class="fa-solid fa-folder-tree"></i></a>                                             
+                       <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
+                    </div>     
+                </div>
+            </div>
+        `;
+        if(folder.favorites == true){
+            var favoriteIcon = document.getElementById(`favoriteIcon_${folder._id}`);
+            favoriteIcon.id = "favoriteIconON";
+        }
+        if(folder.shared == true){
+            var shareIcon = document.getElementById(`shareIcon_${folder._id}`);
+            shareIcon.id = "shareIconON";
+        }
+        };
+    }); 
+    
 }
 
 
@@ -206,50 +332,95 @@ function Pcs(){
     `;
 }
 
-function userShareProjects(){
+const userShareProjects = async() => {
+
+    const resultado = await fetch(`http://localhost:8888/folders`, {
+        method: 'GET'
+    });
+    
+    folders = await resultado.json();
+
     document.getElementById('mainHeader').innerHTML = 'Share Projects';
     document.getElementById('projectCard').innerHTML = '';
-    document.getElementById('projectCard').innerHTML += `
-    <div class="col">
-        <div class="card" style="width: 16rem;"> 
-            <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project">   
-            <div class="card-body">                                                            
-            <h5 class="card-title">Untitled</h5>                                                  
-            </div>                                                     
-            <ul class="list-group list-group-flush">                                                     
-                <li class="list-group-item">Username</li>                                                   
-            </ul>                                                    
-            <div class="card-body">                                                    
-                <a href="#" class="card-link" id="favoriteIcon"><i class="fa-regular fa-star"></i></a>                                                   
-                <a href="#" class="card-link" id="shareIcon"><i class="fa-solid fa-folder-tree"></i></a>                                             
-                <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
-            </div>     
-        </div>
-    </div>
-    `;
+
+    folders.forEach(folder => {
+        if(folder.shared == true){
+            document.getElementById('projectCard').innerHTML += `
+            <div class="col">
+                <div class="card" style="width: 16rem;"> 
+                    <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project" onclick="openFolder('${folder._id}')">   
+                    <div class="card-body">                                                            
+                        <h5 class="card-title">${folder.title}</h5>                                                  
+                    </div>                                                     
+                    <ul class="list-group list-group-flush">                                                     
+                        <li class="list-group-item">${folder.user.username}</li>                                                   
+                    </ul>                                                    
+                    <div class="card-body">                                                    
+                       <a href="#" class="card-link" id="favoriteIcon_${folder._id}"><i class="fa-regular fa-star"></i></a>                                                   
+                       <a href="#" class="card-link" id="shareIcon_${folder._id}"><i class="fa-solid fa-folder-tree"></i></a>                                             
+                       <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
+                    </div>     
+                </div>
+            </div>
+        `;
+        if(folder.user._id == selectedUser){
+            if(folder.favorites == true){
+                var favoriteIcon = document.getElementById(`favoriteIcon_${folder._id}`);
+                favoriteIcon.id = "favoriteIconON";
+            }
+        }
+        if(folder.shared == true){
+            var shareIcon = document.getElementById(`shareIcon_${folder._id}`);
+            shareIcon.id = "shareIconON";
+        }
+        };
+    }); 
+    
 }
 
-function userFavProjects(){
+const userFavProjects = async() =>{
+
+    const resultado = await fetch(`http://localhost:8888/folders`, {
+        method: 'GET'
+    });
+    
+    folders = await resultado.json();
+
     document.getElementById('mainHeader').innerHTML = 'Favorites';
     document.getElementById('projectCard').innerHTML = '';
-    document.getElementById('projectCard').innerHTML += `
-    <div class="col">
-        <div class="card" style="width: 16rem;"> 
-            <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project">   
-            <div class="card-body">                                                            
-            <h5 class="card-title">Untitled</h5>                                                  
-            </div>                                                     
-            <ul class="list-group list-group-flush">                                                     
-                <li class="list-group-item">Username</li>                                                   
-            </ul>                                                    
-            <div class="card-body">                                                    
-                <a href="#" class="card-link" id="favoriteIcon"><i class="fa-regular fa-star"></i></a>                                                   
-                <a href="#" class="card-link" id="shareIcon"><i class="fa-solid fa-folder-tree"></i></a>                                             
-                <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
-            </div>     
-        </div>
-    </div>
-    `;
+
+    folders.forEach(folder => {
+        if(folder.user._id == selectedUser){
+            if(folder.favorites == true){
+                document.getElementById('projectCard').innerHTML += `
+                <div class="col">
+                    <div class="card" style="width: 16rem;"> 
+                        <img src="/assets/img/project-bg.jpg" class="card-img-top" alt="Project" onclick="openFolder('${folder._id}')">   
+                        <div class="card-body">                                                            
+                            <h5 class="card-title">${folder.title}</h5>                                                  
+                        </div>                                                     
+                        <ul class="list-group list-group-flush">                                                     
+                            <li class="list-group-item">${folder.user.username}</li>                                                   
+                        </ul>                                                    
+                        <div class="card-body">                                                    
+                           <a href="#" class="card-link" id="favoriteIcon_${folder._id}"><i class="fa-regular fa-star"></i></a>                                                   
+                           <a href="#" class="card-link" id="shareIcon_${folder._id}"><i class="fa-solid fa-folder-tree"></i></a>                                             
+                           <a href="#" class="card-link" id="recycleIcon"><i class="fa-regular fa-trash-can"></i></a>                                      
+                        </div>     
+                    </div>
+                </div>
+            `;
+            if(folder.favorites == true){
+                var favoriteIcon = document.getElementById(`favoriteIcon_${folder._id}`);
+                favoriteIcon.id = "favoriteIconON";
+            }
+            if(folder.shared == true){
+                var shareIcon = document.getElementById(`shareIcon_${folder._id}`);
+                shareIcon.id = "shareIconON";
+            }
+            };
+        }; 
+    }); 
 }
 
 function userRecycle(){
@@ -275,29 +446,91 @@ function userRecycle(){
     `;
 }
 
-function storageLimit (){
+const storageLimit = async() => {
+
+    const resultado = await fetch(`http://localhost:8888/users/${selectedUser}`, {
+        method: 'GET'
+    });
+
+    usuario = await resultado.json();
+
     let limit = 0;
-    membership = "Premium";
-    proyects = 1
     let result = 0;
     let meter = document.querySelector('.progress-bar')
     
-    if(membership == "free"){
+    if(usuario.membership == "Free"){
         limit = 2;
-
-    } if(membership == "Standard"){
-        limit = 5;
-        
-    } if(membership == "Premium"){
-        limit = 10;
-        result = proyects/limit; 
+        result = usuario.folders.length/limit; 
         meter.style.width = `${result*100 + '%'}`;
-        document.getElementById('storageMeter').innerHTML += `${result*100 + '%'}`;
-    }
+        document.getElementById('storageMeter').innerHTML = `${result*100 + '%'}`;
+    } if(usuario.membership == "Standard"){
+        limit = 5;
+        result = usuario.folders.length/limit; 
+        meter.style.width = `${result*100 + '%'}`;
+        document.getElementById('storageMeter').innerHTML = `${result*100 + '%'}`;
+    } if(usuario.membership == "Premium"){
+        limit = 10;
+        result = usuario.folders.length/limit; 
+        meter.style.width = `${result*100 + '%'}`;
+        document.getElementById('storageMeter').innerHTML = `${result*100 + '%'}`;
+    } if(usuario.membership == "Platinum"){
+        limit = 20;
+        result = usuario.folders.length/limit; 
+        meter.style.width = `${result*100 + '%'}`;
+        document.getElementById('storageMeter').innerHTML = `${result*100 + '%'}`;
+    };
 };
 
 storageLimit ();
 
 function codePage(){
+    htmlCode = localStorage.removeItem('html_code') || '';
+    cssCode = localStorage.removeItem('css_code') || '';
+    jsCode = localStorage.removeItem('js_code') || '';
     window.location.href = 'code.html'
 }
+
+
+/*
+function htmlDownload(code){
+    var blob = new Blob([code], {type: 'text/html'});
+
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+
+    const content = document.getElementById('htmlink');
+
+    content.addEventListener('click', function(){
+        a.click();
+    });
+}
+
+function cssDownload(code){
+    var blob = new Blob([code], {type: 'text/css'});
+
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'styles.css';
+
+    const content = document.getElementById('csslink');
+
+    content.addEventListener('click', function(){
+        a.click();
+    });
+}
+
+function jsDownload(code){
+    var blob = new Blob([code], {type: 'text/js'});
+
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'controller.js';
+
+    const content = document.getElementById('jslink');
+
+    content.addEventListener('click', function(){
+        a.click();
+    });
+}
+*/
