@@ -1,7 +1,6 @@
 body {
     margin:0px;
     font-family: "Raleway", sans-serif;
-    overflow: hidden;
 }
 
 .header {
@@ -31,13 +30,13 @@ button:hover {
 
 .editor {
     width: 100%;
-    height: calc(100vh - 50px);
     display: flex;
 }
 
 .code {
     width: 500px;
     border-right: 1px solid #888; 
+    overflow: hidden;
 }
 
 .code>div {
@@ -47,8 +46,8 @@ button:hover {
 }
 
 .preview {
-    width: calc(100% - 500px);
-    height: 100%;
+    width: 100%;
+
 }
 
 .preview iframe {
@@ -56,4 +55,12 @@ button:hover {
     height: 100%;
     border: none;
     outline: none;
+}
+
+.logo:hover{
+    cursor: pointer;
+}
+
+h1{
+    color: #fff;
 }

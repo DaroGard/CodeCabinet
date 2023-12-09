@@ -14,10 +14,11 @@
 </head>
 <body>
     <div class="header">
-        <a href="main.html"><img src="assets/img/lg-name.png" style="width: 50%;"></a>
-        <button id="Fav-btn">Favorite</button>
-        <button id="save-btn" onclick="savecontent()">Save</button>
+        <a><img src="assets/img/lg-name.png" style="width: 50%;" onclick="returnMain()" class="logo"></a>
+        <div id="nombreUsuario"><h1 contenteditable="true" id="title">Untitle</h1></div>
         <button id="run-btn">Run</button>
+        <button id="save-btn" onclick="addFolder()">Save</button>
+        <button id="download-btn" onclick="downloadCode()">Download</button>
     </div>
     <div class="editor">      
         <div class="code">        
@@ -31,5 +32,6 @@
     </div>
     
     <script src="assets/js/code-controller.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js"></script>
 </body>
 </html>
