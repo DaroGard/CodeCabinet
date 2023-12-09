@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 import { Folder } from "./folder.model"; 
 
+const InsideSchema = new mongoose.Schema({
+    html: String,
+    css: String,
+    js: String,
+  });
+  
+
 const schema = new mongoose.Schema<Folder>({
     _id:mongoose.Types.ObjectId,        
     title: String,      
@@ -8,20 +15,10 @@ const schema = new mongoose.Schema<Folder>({
         _id:mongoose.Types.ObjectId,        
         username: String      
     },      
-    Favorites: Boolean,      
-    Shared: Boolean,      
+    favorites: Boolean,      
+    shared: Boolean,      
     recycle: Boolean,     
-    inside:[       
-        {       
-            html: String       
-        },       
-        {       
-            css: String       
-        },        
-        {       
-            js: String  
-        }
-        ]    
+    inside:[InsideSchema]    
 });
 
 export const FolderSchema = mongoose.model('folders', schema);

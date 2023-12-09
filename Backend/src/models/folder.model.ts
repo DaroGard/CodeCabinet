@@ -7,8 +7,8 @@ export interface Folder {
             _id:mongoose.Types.ObjectId,
             username: string
         },
-        Favorites: boolean,
-        Shared: boolean,
+        favorites: boolean,
+        shared: boolean,
         recycle: boolean,
         inside: [
             {

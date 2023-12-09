@@ -160,12 +160,9 @@ a {
     color: #fff;
 }
 
-#favoriteIcon:hover{
-    color:#ffd700!important;
-}
-
-#shareIcon:hover{
+.card-link:hover{
     color:#A7E24C!important;
+
 }
 
 #recycleIcon:hover{
@@ -198,7 +195,7 @@ a {
 
 }
 
-#planModalHeader{
+.planModalHeader{
     font-size: x-large;
 }
 
@@ -269,7 +266,7 @@ a {
 }
 
 #shareIconON{
-    color: #94f108!important;
+    color: #0158ee!important;
 }
 
 @media (min-width: 55px) and (max-width: 370px){

@@ -56,3 +56,11 @@ button:hover {
     border: none;
     outline: none;
 }
+
+.logo:hover{
+    cursor: pointer;
+}
+
+h1{
+    color: #fff;
+}
